@@ -8,6 +8,7 @@
     <Folder Include="Exceptions\" />
     <Folder Include="Models\Contracts\" />
     <Folder Include="Models\Model\" />
+    <Folder Include="Models\ViewModels\AccountViewModel\" />
     <Folder Include="Utilities\" />
     <Folder Include="Repositories\" />
     <Folder Include="Services\" />
@@ -17,6 +18,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="2.1.1" />
   </ItemGroup>
 
 </Project>
