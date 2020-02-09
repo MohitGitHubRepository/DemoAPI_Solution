@@ -3,28 +3,21 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace DemoAPI.Models
+namespace DemoAPI.Core.ViewModels.AccountViewModel
 {
-    public class User :BaseEntity
+    public class LoginViewModel
     {
-        public User():base()
-        {
-
-        }
         [Required]
-        [EmailAddress]
         [Display(Name = "Email")]
+        [EmailAddress]
         public string Email { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
         [Display(Name = "Password")]
         public string Password { get; set; }
-             
-        [DataType(DataType.PhoneNumber)]
-        public string MobilePhone { get; set; }
 
-       
-        public DateTimeOffset? ModifiedDateTime;
+        [Display(Name = "Remember me?")]
+        public bool RememberMe { get; set; }
     }
 }

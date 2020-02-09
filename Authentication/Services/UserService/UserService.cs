@@ -1,6 +1,6 @@
-﻿using DemoAPI.Contracts;
+﻿using DemoAPI.Core.Contracts;
+using DemoAPI.Core.ViewModels.AccountViewModel;
 using DemoAPI.Models;
-using DemoAPI.ViewModels.AccountViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,7 +36,7 @@ namespace DemoAPI.Services.UserService
                 }
              
             }
-            catch
+            catch(Exception ex)
             {
                 //Exception 
                 return "";
@@ -69,8 +69,11 @@ namespace DemoAPI.Services.UserService
             user.Email = registerViewModel.Email;
             user.MobilePhone = registerViewModel.MobilePhone;
             user.Password = registerViewModel.Password;
+            user.ModifiedDateTime = DateTime.Now;
             return user;
         }
+
+       
 
         public string UpdateUser(User userDetail)
         {

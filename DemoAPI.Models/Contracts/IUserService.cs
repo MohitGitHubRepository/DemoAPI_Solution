@@ -1,11 +1,11 @@
-﻿using DemoAPI.Models;
-using DemoAPI.ViewModels.AccountViewModel;
+﻿using DemoAPI.Core.ViewModels.AccountViewModel;
+using DemoAPI.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace DemoAPI.Contracts
+namespace DemoAPI.Core.Contracts
 {
     public interface IUserService
     {

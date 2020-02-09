@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace DemoAPI.ViewModels.AccountViewModel
+namespace DemoAPI.Core.ViewModels.AccountViewModel
 {
     public class RegisterViewModel
     {
@@ -20,13 +20,12 @@ namespace DemoAPI.ViewModels.AccountViewModel
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
+        [Display(Name = "ConfirmPassword")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
         [DataType(DataType.PhoneNumber)]
         public string MobilePhone { get; set; }
 
-        
     }
 }

@@ -1,10 +1,8 @@
-﻿using DemoAPI.Contracts;
-using DemoAPI.Models;
+﻿using DemoAPI.Core.Contracts;
+using DemoAPI.Core.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace DemoAPI.DataAccess.SQL
 {
@@ -15,7 +13,7 @@ namespace DemoAPI.DataAccess.SQL
         public SQLRepository(DataContext dataContext)
         {
             context = dataContext;
-            this.dbset = this.context.Set<T>();
+            this.dbset = context.Set<T>();
 
         }
         public IQueryable<T> Collection()

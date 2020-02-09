@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DemoAPI.Models
+namespace DemoAPI.Core.Models
 {
     public abstract class BaseEntity
     {
         public string Id { get; set; }
-        public DateTimeOffset CreatedDateTime;
+        public DateTime CreatedDateTime { get; set; }
 
         public BaseEntity()
         {
             this.Id = Guid.NewGuid().ToString();
-            this.CreatedDateTime = DateTimeOffset.Now;
+            this.CreatedDateTime = DateTime.Now;
         }
     }
 }
