@@ -42,6 +42,40 @@ namespace DemoAPI.Services.UserService
                 return "";
             }
         }
+        public LoggedInUserViewModel LoginUser(string UserNameOrPhoneNumber,string Password)
+        {
+            LoggedInUserViewModel loggedInUser = new LoggedInUserViewModel();
+            User userbyEmail= GetUserByEmail(UserNameOrPhoneNumber);
+            User userbyphone = GetUserByphone(UserNameOrPhoneNumber);
+           
+            if (!ReferenceEquals(userbyEmail, null))
+            {
+                if(userbyEmail.Password == Password)
+                {
+                    MapUserToLoggedInViewModel(loggedInUser, userbyEmail);
+                }
+            }
+            else if(!ReferenceEquals(userbyphone, null))
+            {
+                if (userbyphone.Password == Password)
+                {
+                    MapUserToLoggedInViewModel(loggedInUser, userbyphone);
+                }
+
+            }
+
+            return loggedInUser;
+        }
+
+        private static void MapUserToLoggedInViewModel(LoggedInUserViewModel loggedInUser, User userbyEmail)
+        {
+            loggedInUser.Email = userbyEmail.Email;
+            loggedInUser.FirstName = userbyEmail.FirstName;
+            loggedInUser.LastName = userbyEmail.LastName;
+            loggedInUser.MobilePhone = userbyEmail.MobilePhone;
+            loggedInUser.Role = userbyEmail.Role;
+            loggedInUser.UserName = userbyEmail.UserName;
+        }
 
         public User GetUser(string username)
         {
@@ -75,7 +109,7 @@ namespace DemoAPI.Services.UserService
 
        
 
-        public string UpdateUser(User userDetail)
+        public string UpdateUser(UpdateUserInfoViewModel updatedUserDetail, User userDetail)
         {
             throw new NotImplementedException();
         }

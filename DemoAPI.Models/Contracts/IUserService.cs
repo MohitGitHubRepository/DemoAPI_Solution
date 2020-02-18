@@ -11,9 +11,10 @@ namespace DemoAPI.Core.Contracts
     {
         IQueryable<User> GetUsers();
         User GetUser(string username);
+        LoggedInUserViewModel LoginUser(string userId, string password);
         User MapUser(RegisterViewModel username);
         User GetUserByEmail(string userid);
         string CreateUser(User userDetail);
-        string UpdateUser(User userDetail);
+        string UpdateUser(UpdateUserInfoViewModel updatedUserDetail, User userDetail);
     }
 }

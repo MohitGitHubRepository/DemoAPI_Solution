@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Authentication.Service;
 using DemoAPI.Core.Contracts;
 using DemoAPI.DataAccess.SQL;
 using DemoAPI.Models;
@@ -42,6 +43,7 @@ namespace Authentication
             services.AddScoped<IRepository<User>, SQLRepository<User>>();
             services.AddScoped<IRepository<User>, SQLRepository<User>>();
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<ITokenGenerator, TokenGenerator>();
          
         }
 
