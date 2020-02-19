@@ -1,8 +1,6 @@
 ﻿using DemoAPI.Core.Model;
-using DemoAPI.Core.ViewModels.AccountViewModel;
-using System;
+using DemoAPI.Core.ViewModels.Survey;
 using System.Collections.Generic;
-using System.Text;
 
 namespace DemoAPI.Core.Contracts.ServiceContract
 {
@@ -14,7 +12,7 @@ namespace DemoAPI.Core.Contracts.ServiceContract
         List<Survey> GetSurveys();
         List<Survey> GetSurveysByCategory(string category);
         Survey GetSurveyById(string Id);
-        string SaveSurvey(Survey survey);
+        string SaveSurvey(CreateSurveyViewModel survey);
         string UpdateSurvey(UpdateSurveyViewModel survey);
         string RemoveSurvey(string Id);
 

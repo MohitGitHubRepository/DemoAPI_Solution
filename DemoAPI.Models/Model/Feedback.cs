@@ -9,7 +9,7 @@ namespace DemoAPI.Core.Model
     {
         public Feedback():base()
         {
-
+            this.ModifiedDateTime = DateTime.Now;
         }
         public string SurveyId { get; set; }
         public string Name { get; set; }

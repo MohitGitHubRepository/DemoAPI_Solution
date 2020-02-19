@@ -10,6 +10,7 @@ namespace DemoAPI.Core.Model
         public Survey() : base()
         {
             Feedbacks = new HashSet<Feedback>();
+            this.ModifiedDateTime = DateTime.Now;
         }
         public string Name { get; set; }
         public string Description { get; set; }

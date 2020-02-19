@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DemoAPI.Core.ViewModels.AccountViewModel
+namespace DemoAPI.Core.ViewModels.Survey
 {
     public class UpdateSurveyViewModel
     {

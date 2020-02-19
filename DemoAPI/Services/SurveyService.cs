@@ -1,11 +1,10 @@
 ﻿using DemoAPI.Core.Contracts;
 using DemoAPI.Core.Contracts.ServiceContract;
 using DemoAPI.Core.Model;
-using DemoAPI.Core.ViewModels.AccountViewModel;
+using DemoAPI.Core.ViewModels.Survey;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace DemoAPI.Services
 {
@@ -58,15 +57,17 @@ namespace DemoAPI.Services
             }
         }
 
-        public string SaveSurvey(Survey survey)
+        public string SaveSurvey(CreateSurveyViewModel createSurvey)
         {
             try
             {
+                Survey survey = new Survey();
+                CreateSurveyMap(createSurvey, survey);
                 repository.Insert(survey);
                 repository.Commit();
                 return "Details saved successfully";
             }
-            catch
+            catch(Exception ex)
             {
                 //Exception
                 return "Email Id or phone number already registered";
@@ -95,6 +96,17 @@ namespace DemoAPI.Services
             {
                 throw new Exception("Not Updated");
             }
+        }
+        private void CreateSurveyMap(CreateSurveyViewModel createSurvey, Survey survey)
+        {
+
+            survey.Name = createSurvey.Name;
+            survey.SurveyDate = createSurvey.SurveyDate;
+            survey.SurveyQuestion = createSurvey.SurveyQuestion;
+            survey.Description = createSurvey.Description;
+            survey.CreatedBy = createSurvey.CreatedBy;
+            survey.Category = createSurvey.Category;
+            survey.ModifiedDateTime = DateTime.Now;
         }
 
         private void UpdateSurveyMap(UpdateSurveyViewModel updatedSurvey, Survey survey)

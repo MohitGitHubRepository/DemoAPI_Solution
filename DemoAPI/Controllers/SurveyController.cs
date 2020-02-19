@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using DemoAPI.Core.Contracts.ServiceContract;
 using DemoAPI.Core.Model;
 using DemoAPI.Core.ViewModels.AccountViewModel;
+using DemoAPI.Core.ViewModels.Survey;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -26,7 +27,7 @@ namespace DemoAPI.Controllers
         #region Suvey 
 
         [HttpPost("create_survey")]
-        public IActionResult CreateSurvey([FromBody] Survey survey)//CreateProperViewModel
+        public IActionResult CreateSurvey([FromBody] CreateSurveyViewModel survey)//CreateProperViewModel
         {
             return Ok(service.SaveSurvey(survey));
         }
@@ -49,7 +50,7 @@ namespace DemoAPI.Controllers
             return Ok(service.GetSurveys());
         }
 
-        [HttpPost("get_survey_by_id")]
+        [HttpPost("get_survey_by_id/{id}")]
         public ActionResult GetSsurveyById(string id)
         {
             return Ok(service.GetSurveyById(id));
