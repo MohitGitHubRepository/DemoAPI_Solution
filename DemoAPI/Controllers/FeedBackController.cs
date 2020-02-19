@@ -47,13 +47,13 @@ namespace DemoAPI.Controllers
             return Ok(service.GetFeedback());
         }
 
-        [HttpPost("get_feedback_by_id")]
+        [HttpPost("get_feedback_by_id/{id}")]
         public ActionResult GetSsurveyById(string id)
         {
             return Ok(service.GetFeedbackById(id));
         }
 
-        [HttpPost("get_feedback_by_servey_id")]
+        [HttpPost("get_feedback_by_servey_id/{id}")]
         public ActionResult GetFeedbackBySurveyId(string id)
         {
             return Ok(service.GetFeedbackById(id));
