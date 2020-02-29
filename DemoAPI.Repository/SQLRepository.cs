@@ -1,7 +1,6 @@
-﻿using DemoAPI.Core.Contracts;
-using DemoAPI.Core.Models;
-using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
+﻿using Microsoft.EntityFrameworkCore;
+using Survey.Core.Model;
+using Survey.DataAccess.SQL.Contracts;
 using System.Linq;
 
 namespace DemoAPI.DataAccess.SQL

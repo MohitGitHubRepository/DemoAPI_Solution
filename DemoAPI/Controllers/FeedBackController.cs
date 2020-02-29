@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using DemoAPI.Core.Contracts.ServiceContract;
-using DemoAPI.Core.ViewModels.Feedback;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Surve.Domain.Contracts;
+using Survey.Core.Model;
 
-namespace DemoAPI.Controllers
+namespace API.SurveyApi.Controllers
 {
     [Route("api/[controller]")]
     [Authorize]
@@ -24,13 +19,13 @@ namespace DemoAPI.Controllers
         #region Feedback 
 
         [HttpPost("create_feedback")]
-        public IActionResult CreateSurvey([FromBody] CreateFeedBackViewModel createFeedback) 
+        public IActionResult CreateSurvey([FromBody] Feedback createFeedback) 
         {
             return Ok(service.SaveFeedback(createFeedback));
         }
 
         [HttpPost("update_feedback")]
-        public IActionResult UpdateSurvey([FromBody]UpdateFeedBackViewModel updatedFeedback)
+        public IActionResult UpdateSurvey([FromBody]Feedback updatedFeedback)
         {
             return Ok(service.UpdateFeedback(updatedFeedback));
         }

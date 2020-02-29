@@ -1,10 +1,4 @@
-﻿using DemoAPI.Core.Contracts;
-using DemoAPI.Core.Contracts.ServiceContract;
-using DemoAPI.Core.Model;
-using DemoAPI.DataAccess.SQL;
-using DemoAPI.Models;
-using DemoAPI.Services;
-using DemoAPI.Services.UserService;
+﻿using DemoAPI.DataAccess.SQL;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -13,6 +7,10 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using Surve.Domain.Contracts;
+using Survey.Core.Model;
+using Survey.DataAccess.SQL.Contracts;
+using Survey.Domain.APIServices;
 using System;
 using System.Text;
 
@@ -41,7 +39,7 @@ namespace DemoAPI
             services.AddSingleton<IConfiguration>(Configuration);
             services.AddScoped<IDataContext, DataContext>();
             services.AddScoped<IRepository<User>, SQLRepository<User>>();
-            services.AddScoped<IRepository<Survey>, SQLRepository<Survey>>();
+            services.AddScoped<IRepository<Survey.Core.Model.Survey>, SQLRepository<Survey.Core.Model.Survey>>();
             services.AddScoped<IRepository<Feedback>, SQLRepository<Feedback>>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<ISurveyContract, SurveyService>();

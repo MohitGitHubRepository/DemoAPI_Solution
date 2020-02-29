@@ -1,10 +1,10 @@
-﻿using DemoAPI.Core.Models;
+﻿using Survey.Core.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace DemoAPI.Core.Contracts
+namespace Survey.DataAccess.SQL.Contracts
 {
     public interface IRepository<T> where T:BaseEntity
     {

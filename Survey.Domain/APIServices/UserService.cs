@@ -1,12 +1,11 @@
-﻿using DemoAPI.Core.Contracts;
-using DemoAPI.Core.ViewModels.AccountViewModel;
-using DemoAPI.Models;
+﻿using Surve.Domain.Contracts;
+using Survey.Core.Model;
+using Survey.Core.ViewModels.AccountViewModel;
+using Survey.DataAccess.SQL.Contracts;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
-namespace DemoAPI.Services.UserService
+namespace Survey.Domain.APIServices
 {
     public class UserService : IUserService
     {
@@ -57,7 +56,7 @@ namespace DemoAPI.Services.UserService
 
        
 
-        public string UpdateUser(UpdateUserInfoViewModel updateUserDetail,User userDetail )
+        public string UpdateUser(User updateUserDetail,User userDetail )
         {
             try
             {
@@ -76,7 +75,7 @@ namespace DemoAPI.Services.UserService
 
         }
 
-        private static void UpdateUserInfoMap(UpdateUserInfoViewModel updateUserDetail, User userDetail)
+        private static void UpdateUserInfoMap(User updateUserDetail, User userDetail)
         {
             userDetail.FirstName = updateUserDetail.FirstName;
             userDetail.LastName = updateUserDetail.LastName;
@@ -85,5 +84,7 @@ namespace DemoAPI.Services.UserService
             userDetail.Role = updateUserDetail.Role;
             userDetail.UserName = updateUserDetail.UserName;
         }
+
+        
     }
 }

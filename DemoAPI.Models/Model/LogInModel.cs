@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DemoAPI.Core.Model
+namespace Survey.Core.Model
 {
     public class LogInModel
     {

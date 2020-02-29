@@ -1,11 +1,8 @@
-﻿using DemoAPI.Core.ViewModels.AccountViewModel;
-using DemoAPI.Models;
-using System;
-using System.Collections.Generic;
+﻿using Survey.Core.Model;
+using Survey.Core.ViewModels.AccountViewModel;
 using System.Linq;
-using System.Text;
 
-namespace DemoAPI.Core.Contracts
+namespace Surve.Domain.Contracts
 {
     public interface IUserService
     {
@@ -15,6 +12,6 @@ namespace DemoAPI.Core.Contracts
         User MapUser(RegisterViewModel username);
         User GetUserByEmail(string userid);
         string CreateUser(User userDetail);
-        string UpdateUser(UpdateUserInfoViewModel updatedUserDetail, User userDetail);
+        string UpdateUser(User updatedUserDetail, User userDetail);
     }
 }

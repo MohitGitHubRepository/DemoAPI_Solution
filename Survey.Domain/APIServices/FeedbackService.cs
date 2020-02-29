@@ -1,13 +1,11 @@
-﻿using DemoAPI.Core.Contracts;
-using DemoAPI.Core.Contracts.ServiceContract;
-using DemoAPI.Core.Model;
-using DemoAPI.Core.ViewModels.Feedback;
+﻿using Surve.Domain.Contracts;
+using Survey.Core.Model;
+using Survey.DataAccess.SQL.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
-namespace DemoAPI.Services
+namespace Survey.Domain.APIServices
 {
     public class FeedbackService : IFeedbackService
     {
@@ -57,21 +55,11 @@ namespace DemoAPI.Services
             }
         }
 
-        public string SaveFeedback(CreateFeedBackViewModel createFeedback)
+        public string SaveFeedback(Feedback createFeedback)
         {
             try
             {
-                Feedback feedback = new Feedback() { SurveyId=createFeedback.SurveyId,
-                     Age = createFeedback.Age,
-                     Comment = createFeedback.Comment,
-                     CommentDateTime = createFeedback.CommentDateTime,
-                     CreatedBy = createFeedback.CreatedBy,
-                     Evaluation = createFeedback.Evaluation,
-                     Gender = createFeedback.Gender,
-                     Name=createFeedback.Name,
-                     Occupation = createFeedback.Occupation
-                };
-                repository.Insert(feedback);
+                repository.Insert(createFeedback);
                 repository.Commit();
                 return "Details saved successfully";
             }
@@ -82,7 +70,7 @@ namespace DemoAPI.Services
             }
         }
 
-        public string UpdateFeedback(UpdateFeedBackViewModel updateFeedback)
+        public string UpdateFeedback(Feedback updateFeedback)
         {
             try
             {
@@ -106,9 +94,9 @@ namespace DemoAPI.Services
             }
         }
 
-        private void UpdateSurveyMap(UpdateFeedBackViewModel updateFeedback, Feedback feedback)
+        private void UpdateSurveyMap(Feedback updateFeedback, Feedback feedback)
         {
-            
+
             feedback.Age = updateFeedback.Age;
             feedback.Comment = updateFeedback.Comment;
             feedback.CommentDateTime = updateFeedback.CommentDateTime;

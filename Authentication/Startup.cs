@@ -1,21 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Authentication.Service;
-using DemoAPI.Core.Contracts;
-using DemoAPI.DataAccess.SQL;
-using DemoAPI.Models;
-using DemoAPI.Services.UserService;
+﻿using DemoAPI.DataAccess.SQL;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
+using Surve.Domain.Contracts;
+using Survey.Core.Model;
+using Survey.DataAccess.SQL.Contracts;
+using Survey.Domain.AuthService;
+using Survey.Domain.AuthService;
 
 namespace Authentication
 {

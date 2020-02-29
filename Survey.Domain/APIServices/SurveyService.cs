@@ -1,35 +1,34 @@
-﻿using DemoAPI.Core.Contracts;
-using DemoAPI.Core.Contracts.ServiceContract;
-using DemoAPI.Core.Model;
-using DemoAPI.Core.ViewModels.Survey;
+﻿using Surve.Domain.Contracts;
+using Survey.DataAccess.SQL.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using mod = Survey.Core.Model;
 
-namespace DemoAPI.Services
+namespace Survey.Domain.APIServices
 {
     public class SurveyService : ISurveyContract
     {
 
-        IRepository<Survey> repository;
+        IRepository<mod.Survey> repository;
        
-        public SurveyService(IRepository<Survey> Repository)
+        public SurveyService(IRepository<mod.Survey> Repository)
         {
             this.repository = Repository;
         }
 
 
-        public Survey GetSurveyById(string Id)
+        public mod.Survey GetSurveyById(string Id)
         {
             return GetSurveys().Where(a => a.Id == Id).FirstOrDefault();
         }
 
-        public List<Survey> GetSurveys()
+        public List<mod.Survey> GetSurveys()
         {
             return repository.Collection().ToList();
         }
 
-        public List<Survey> GetSurveysByCategory(string category)
+        public List<mod.Survey> GetSurveysByCategory(string category)
         {
             return GetSurveys().Where(a => a.Category == category).ToList();
         }
@@ -38,7 +37,7 @@ namespace DemoAPI.Services
         {
             try
             {
-                Survey survey = GetSurveyById(Id);
+                mod.Survey survey = GetSurveyById(Id);
                 if (survey != null)
                 {
                     this.repository.Delete(survey);
@@ -57,13 +56,13 @@ namespace DemoAPI.Services
             }
         }
 
-        public string SaveSurvey(CreateSurveyViewModel createSurvey)
+        public string SaveSurvey(mod.Survey createSurvey)
         {
             try
             {
-                Survey survey = new Survey();
-                CreateSurveyMap(createSurvey, survey);
-                repository.Insert(survey);
+                 
+                //CreateSurveyMap(createSurvey, survey);
+                repository.Insert(createSurvey);
                 repository.Commit();
                 return "Details saved successfully";
             }
@@ -74,11 +73,11 @@ namespace DemoAPI.Services
             }
         }
 
-        public string UpdateSurvey(UpdateSurveyViewModel updatedSurvey)
+        public string UpdateSurvey(mod.Survey updatedSurvey)
         {
             try
             {
-                Survey survey = GetSurveyById(updatedSurvey.Id);
+                mod.Survey survey = GetSurveyById(updatedSurvey.Id);
                 if (survey == null)
                 {
                     return "Survey Does Not Exists";
@@ -97,21 +96,21 @@ namespace DemoAPI.Services
                 throw new Exception("Not Updated");
             }
         }
-        private void CreateSurveyMap(CreateSurveyViewModel createSurvey, Survey survey)
+        //private void CreateSurveyMap(CreateSurveyViewModel createSurvey, Survey survey)
+        //{
+
+        //    survey.Name = createSurvey.Name;
+        //    survey.SurveyDate = createSurvey.SurveyDate;
+        //    survey.SurveyQuestion = createSurvey.SurveyQuestion;
+        //    survey.Description = createSurvey.Description;
+        //    survey.CreatedBy = createSurvey.CreatedBy;
+        //    survey.Category = createSurvey.Category;
+        //    survey.ModifiedDateTime = DateTime.Now;
+        //}
+
+        private void UpdateSurveyMap(mod.Survey updatedSurvey, mod.Survey survey)
         {
 
-            survey.Name = createSurvey.Name;
-            survey.SurveyDate = createSurvey.SurveyDate;
-            survey.SurveyQuestion = createSurvey.SurveyQuestion;
-            survey.Description = createSurvey.Description;
-            survey.CreatedBy = createSurvey.CreatedBy;
-            survey.Category = createSurvey.Category;
-            survey.ModifiedDateTime = DateTime.Now;
-        }
-
-        private void UpdateSurveyMap(UpdateSurveyViewModel updatedSurvey, Survey survey)
-        {
-           
             survey.Name = updatedSurvey.Name;
             survey.SurveyDate = updatedSurvey.SurveyDate;
             survey.SurveyQuestion = updatedSurvey.SurveyQuestion;

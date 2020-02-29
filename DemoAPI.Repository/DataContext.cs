@@ -1,7 +1,7 @@
-﻿using DemoAPI.Core.Contracts;
-using DemoAPI.Core.Model;
-using DemoAPI.Models;
+﻿
 using Microsoft.EntityFrameworkCore;
+using Survey.Core.Model;
+using Survey.DataAccess.SQL.Contracts;
 
 namespace DemoAPI.DataAccess.SQL
 {
@@ -16,7 +16,7 @@ namespace DemoAPI.DataAccess.SQL
         }
 
         public DbSet<User> User { get; set; }
-        public DbSet<Survey> Survey { get; set; }
+        public DbSet<Survey.Core.Model.Survey> Survey { get; set; }
         public DbSet<Feedback> Feedbacks { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -45,7 +45,7 @@ namespace DemoAPI.DataAccess.SQL
                 .Property(n => n.Role);
             user_table.Property(t => t.CreatedDateTime).HasColumnType("DateTime");
             user_table.Property(n => n.ModifiedDateTime).HasColumnType("DateTime");
-            var survey_table = modelBuilder.Entity<Survey>();
+            var survey_table = modelBuilder.Entity<Survey.Core.Model.Survey>();
             survey_table
                 .ToTable("Survey");
             survey_table

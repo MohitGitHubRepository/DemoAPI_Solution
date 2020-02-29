@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Authentication.Service;
-using DemoAPI.Core.Contracts;
-using DemoAPI.Core.Model;
-using DemoAPI.Core.ViewModels.AccountViewModel;
-using DemoAPI.Models;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using Surve.Domain.Contracts;
+using Survey.Core.Model;
+using Survey.Core.ViewModels.AccountViewModel;
+using System;
 
-namespace Authentication.Controllers
+namespace API.Authentication.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -25,11 +19,11 @@ namespace Authentication.Controllers
             tokenGenerator = _tokenGenerator;
         }
         [HttpPost("register_user")]
-        public ActionResult RegisterUser([FromBody] RegisterViewModel registerViewModel)
+        public ActionResult RegisterUser([FromBody] User registerUser)
 {
             if (ModelState.IsValid)
             {
-                return Ok(service.CreateUser(service.MapUser(registerViewModel)));
+                return Ok(service.CreateUser(registerUser));
             }
             else
             {
@@ -40,18 +34,18 @@ namespace Authentication.Controllers
         }
 
         [HttpPost("login")]
-        public IActionResult Login([FromBody] LogInModel logInModel  )
+        public IActionResult Login([FromBody] User logInModel  )
         {
             try
             {
-                LoggedInUserViewModel loggedInUser = service.LoginUser(logInModel.UserId, logInModel.Password);
+                LoggedInUserViewModel loggedInUser = service.LoginUser(logInModel.Email, logInModel.Password);
 
                 if (!ReferenceEquals(loggedInUser, null))
                 {
                     //calling the function for the JWT token for respecting user
                     if (!ReferenceEquals(tokenGenerator, null))
                     {
-                        string value = tokenGenerator.GetJWTToken(logInModel.UserId);
+                        string value = tokenGenerator.GetJWTToken(logInModel.Email);
                         //returning the token to the consumer app
                         loggedInUser.Token = value;
                         return Ok(loggedInUser);

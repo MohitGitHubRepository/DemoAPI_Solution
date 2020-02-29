@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using DemoAPI.Core.Contracts;
-using DemoAPI.Core.Model;
-using DemoAPI.Core.ViewModels.AccountViewModel;
-using DemoAPI.Models;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Surve.Domain.Contracts;
+using Survey.Core.Model;
+using Survey.Core.ViewModels.AccountViewModel;
+using System;
 
-namespace DemoAPI.Controllers
+namespace API.SurveyApi.Controllers
 {
     [Route("api/[controller]")]
     [Authorize]
@@ -55,7 +50,7 @@ namespace DemoAPI.Controllers
             }
         }
         [HttpPost("update")]
-        public IActionResult UpdateUserInfo([FromBody] UpdateUserInfoViewModel userinfo )
+        public IActionResult UpdateUserInfo([FromBody] User userinfo )
         {
             //Need to implement correct logic to update Email or PhoneNumber
             if(User!=null)

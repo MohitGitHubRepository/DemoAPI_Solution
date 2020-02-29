@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using DemoAPI.Core.Contracts.ServiceContract;
-using DemoAPI.Core.Model;
-using DemoAPI.Core.ViewModels.AccountViewModel;
-using DemoAPI.Core.ViewModels.Survey;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Surve.Domain.Contracts;
+using mod = Survey.Core.Model;
 
-namespace DemoAPI.Controllers
+namespace API.SurveyApi.Controllers
 {
     [Route("api/[controller]")]
     [Authorize]
@@ -27,13 +20,13 @@ namespace DemoAPI.Controllers
         #region Suvey 
 
         [HttpPost("create_survey")]
-        public IActionResult CreateSurvey([FromBody] CreateSurveyViewModel survey)//CreateProperViewModel
+        public IActionResult CreateSurvey([FromBody] mod.Survey survey)//CreateProperViewModel
         {
             return Ok(service.SaveSurvey(survey));
         }
 
         [HttpPost("update_survey")]
-        public IActionResult UpdateSurvey([FromBody] UpdateSurveyViewModel updatedSurvey)
+        public IActionResult UpdateSurvey([FromBody] mod.Survey updatedSurvey)
         {
             return Ok(service.UpdateSurvey(updatedSurvey));
         }

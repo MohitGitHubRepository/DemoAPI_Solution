@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DemoAPI.Core.Models
+namespace Survey.Core.Model
 {
     public abstract class BaseEntity
     {

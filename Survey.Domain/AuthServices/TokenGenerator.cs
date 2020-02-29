@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Security.Claims;
-using System.IdentityModel.Tokens.Jwt;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
+﻿using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
+using Surve.Domain.Contracts;
+using System;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 
-namespace Authentication.Service
+namespace Survey.Domain.AuthService
 {
     public class TokenGenerator : ITokenGenerator
     {

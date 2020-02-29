@@ -1,11 +1,9 @@
-﻿using DemoAPI.Core.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
-namespace DemoAPI.Core.Model
+namespace Survey.Core.Model
 {
-    public class Survey:BaseEntity
+    public class Survey :BaseEntity
     {
         public Survey() : base()
         {

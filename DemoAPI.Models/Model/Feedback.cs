@@ -1,9 +1,6 @@
-﻿using DemoAPI.Core.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System;
 
-namespace DemoAPI.Core.Model
+namespace Survey.Core.Model
 {
     public class Feedback:BaseEntity
     {

@@ -1,12 +1,11 @@
-﻿using DemoAPI.Core.Contracts;
-using DemoAPI.Core.ViewModels.AccountViewModel;
-using DemoAPI.Models;
+﻿using Surve.Domain.Contracts;
+using Survey.Core.Model;
+using Survey.Core.ViewModels.AccountViewModel;
+using Survey.DataAccess.SQL.Contracts;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
-namespace DemoAPI.Services.UserService
+namespace Survey.Domain.AuthService
 {
     public class UserService : IUserService
     {
@@ -109,7 +108,7 @@ namespace DemoAPI.Services.UserService
 
        
 
-        public string UpdateUser(UpdateUserInfoViewModel updatedUserDetail, User userDetail)
+        public string UpdateUser(User updatedUserDetail, User userDetail)
         {
             throw new NotImplementedException();
         }

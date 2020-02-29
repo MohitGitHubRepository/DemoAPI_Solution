@@ -1,10 +1,6 @@
-﻿using DemoAPI.Core.Models;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
+﻿using System;
 
-namespace DemoAPI.Models
+namespace Survey.Core.Model
 {
     public class User :BaseEntity
     {

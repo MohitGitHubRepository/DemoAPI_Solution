@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
 
-namespace DemoAPI.Core.ViewModels.AccountViewModel
+namespace Survey.Core.ViewModels.AccountViewModel
 {
     public class RegisterViewModel
     {

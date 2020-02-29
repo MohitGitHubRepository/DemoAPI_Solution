@@ -16,8 +16,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DemoAPI.Models\DemoAPI.Core.csproj" />
-    <ProjectReference Include="..\DemoAPI.Repository\DemoAPI.DataAccess.SQL.csproj" />
+    <ProjectReference Include="..\DemoAPI.Models\Survey.Core.csproj" />
+    <ProjectReference Include="..\DemoAPI.Repository\Survey.DataAccess.SQL.csproj" />
+    <ProjectReference Include="..\Survey.Domain\Survey.Domain.csproj" />
   </ItemGroup>
 
 </Project>
