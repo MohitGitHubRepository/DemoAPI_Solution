@@ -44,15 +44,15 @@ namespace Survey.Domain.APIServices
             return repository.Collection();
         }
 
-        public User MapUser(RegisterViewModel registerViewModel)
-        {
-            User user = new User();
-            user.Email = registerViewModel.Email;
-            user.MobilePhone = registerViewModel.MobilePhone;
-            user.Password = registerViewModel.Password;
-            user.ModifiedDateTime = DateTime.Now;
-            return user;
-        }                
+        //public User MapUser(RegisterViewModel registerViewModel)
+        //{
+        //    User user = new User();
+        //    user.Email = registerViewModel.Email;
+        //    user.MobilePhone = registerViewModel.MobilePhone;
+        //    user.Password = registerViewModel.Password;
+        //    user.ModifiedDateTime = DateTime.Now;
+        //    return user;
+        //}                
 
        
 
