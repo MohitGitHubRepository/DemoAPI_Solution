@@ -24,6 +24,8 @@ namespace Survey.Domain.AuthService
                 User userbyPhone = GetUserByphone(user.MobilePhone);
                 if (userByEmail == null && userbyPhone==null)
                 {
+                    user.ModifiedDateTime = DateTime.Now;
+                    user.CreatedDateTime = DateTime.Now;
                     repository.Insert(user);
                     repository.Commit();
                     return "Details saved successfully";

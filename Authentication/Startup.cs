@@ -7,9 +7,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Surve.Domain.Contracts;
 using Survey.Core.Model;
+using Survey.DataAccess.SQL;
 using Survey.DataAccess.SQL.Contracts;
 using Survey.Domain.AuthService;
 using Survey.Domain.AuthService;
+using Survey.Domain.AuthServices.RefreshToken;
 
 namespace Authentication
 {
@@ -38,7 +40,9 @@ namespace Authentication
             services.AddScoped<IRepository<User>, SQLRepository<User>>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<ITokenGenerator, TokenGenerator>();
-         
+            services.AddScoped<IRefreshTokenGenerator, RefreshTokenGenerator>();
+            services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

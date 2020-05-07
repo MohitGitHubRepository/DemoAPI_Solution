@@ -28,7 +28,7 @@ namespace Survey.Domain.AuthService
                 issuer: "AuthenticationService",
                 audience: "AuthService",
                 claims: claims,
-                expires: DateTime.Now.AddMinutes(30),
+                expires: DateTime.Now.AddSeconds(30),
                 signingCredentials: cred
                 );
 
